@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="adminSayfasi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminSayfasi.Designer.cs">
+      <DependentUpon>adminSayfasi.cs</DependentUpon>
+    </Compile>
     <Compile Include="anasayfa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="adminSayfasi.resx">
+      <DependentUpon>adminSayfasi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="anasayfa.resx">
       <DependentUpon>anasayfa.cs</DependentUpon>
     </EmbeddedResource>

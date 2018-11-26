@@ -151,6 +151,14 @@ namespace kutuphane
 				return this.GetTable<yerbilgisi>();
 			}
 		}
+		
+		public System.Data.Linq.Table<admin> admin
+		{
+			get
+			{
+				return this.GetTable<admin>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.kategori")]
@@ -1426,6 +1434,141 @@ namespace kutuphane
 				if ((this._durum != value))
 				{
 					this._durum = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.admin")]
+	public partial class admin
+	{
+		
+		private string _ad;
+		
+		private string _tc;
+		
+		private int _id;
+		
+		private int _kutuphaneID;
+		
+		private string _sifre;
+		
+		private string _adres;
+		
+		private string _tel;
+		
+		public admin()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ad
+		{
+			get
+			{
+				return this._ad;
+			}
+			set
+			{
+				if ((this._ad != value))
+				{
+					this._ad = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tc", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string tc
+		{
+			get
+			{
+				return this._tc;
+			}
+			set
+			{
+				if ((this._tc != value))
+				{
+					this._tc = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL")]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this._id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kutuphaneID", DbType="Int NOT NULL")]
+		public int kutuphaneID
+		{
+			get
+			{
+				return this._kutuphaneID;
+			}
+			set
+			{
+				if ((this._kutuphaneID != value))
+				{
+					this._kutuphaneID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sifre", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string sifre
+		{
+			get
+			{
+				return this._sifre;
+			}
+			set
+			{
+				if ((this._sifre != value))
+				{
+					this._sifre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_adres", DbType="NVarChar(50)")]
+		public string adres
+		{
+			get
+			{
+				return this._adres;
+			}
+			set
+			{
+				if ((this._adres != value))
+				{
+					this._adres = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tel", DbType="NVarChar(50)")]
+		public string tel
+		{
+			get
+			{
+				return this._tel;
+			}
+			set
+			{
+				if ((this._tel != value))
+				{
+					this._tel = value;
 				}
 			}
 		}

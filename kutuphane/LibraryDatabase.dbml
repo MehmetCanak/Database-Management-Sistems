@@ -93,4 +93,15 @@
       <Association Name="kutuphane_yerbilgisi" Member="kutuphane" ThisKey="kutuphaneID" OtherKey="id" Type="kutuphane" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.admin" Member="admin">
+    <Type Name="admin">
+      <Column Name="ad" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="tc" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="kutuphaneID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sifre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="adres" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="tel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

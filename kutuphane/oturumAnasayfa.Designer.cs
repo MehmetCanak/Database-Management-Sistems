@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label2
@@ -99,9 +99,9 @@
             // 
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(24, 105);
+            this.label5.Location = new System.Drawing.Point(32, 105);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(798, 62);
+            this.label5.Size = new System.Drawing.Size(778, 62);
             this.label5.TabIndex = 7;
             this.label5.Text = "* Kütüphane hesabınız ile ilgili bilgilendirmelerden haberdar olabilmek için lütf" +
     "en sisteme kayıtlı e-posta adreslerinizi güncelleyiniz.";
@@ -192,11 +192,21 @@
             this.button1.Text = "giriş yap";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(331, 353);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "label10";
+            // 
             // oturumAnasayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 480);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
@@ -220,7 +230,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
@@ -236,5 +245,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label10;
     }
 }
