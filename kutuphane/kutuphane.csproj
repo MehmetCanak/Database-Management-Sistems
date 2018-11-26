@@ -60,7 +60,6 @@
     <Compile Include="AramaYapmaSinifi.Designer.cs">
       <DependentUpon>AramaYapmaSinifi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="KutuphaneDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
