@@ -71,6 +71,7 @@
             this.oturumac.TabIndex = 1;
             this.oturumac.Text = "oturum aç";
             this.oturumac.UseVisualStyleBackColor = true;
+            this.oturumac.Click += new System.EventHandler(this.oturumac_Click);
             // 
             // pictureBox2
             // 

@@ -48,6 +48,12 @@ namespace kutuphane
             ays.ShowDialog();
         }
 
+        private void oturumac_Click(object sender, EventArgs e)
+        {
+            oturumAnasayfa oas = new oturumAnasayfa();
+            oas.Show();
+        }
+
         // var ara= dt.kitap.Where(s => s.ad.Contains(aranan)).Select(s=>s.ad);
         //var ara = from i in dt.kitap
         //          where i.ad.Contains(aranan)
