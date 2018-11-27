@@ -38,8 +38,12 @@ namespace kutuphane
                     label10.Text = kullanici.ToString();
                     if (kullanici == true)
                     {
+                        oturumAnasayfa oas = new oturumAnasayfa();
+                        oas.Close();
                         adminSayfasi asf = new adminSayfasi();
-                        asf.ShowDialog();
+                        asf.Show();
+                        this.Hide();
+
                     }
                     else
                     {

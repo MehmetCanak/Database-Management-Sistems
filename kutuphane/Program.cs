@@ -16,7 +16,7 @@ namespace kutuphane
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new anasayfa());
+            Application.Run(new Form1());
         }
     }
 }

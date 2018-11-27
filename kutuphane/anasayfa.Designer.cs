@@ -95,7 +95,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Tümü"});
-            this.comboBox1.Location = new System.Drawing.Point(119, 138);
+            this.comboBox1.Location = new System.Drawing.Point(116, 141);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(175, 27);
             this.comboBox1.TabIndex = 5;
@@ -108,9 +108,9 @@
             this.textBox1.BackColor = System.Drawing.SystemColors.Window;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBox1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBox1.Location = new System.Drawing.Point(295, 139);
+            this.textBox1.Location = new System.Drawing.Point(312, 140);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 26);
+            this.textBox1.Size = new System.Drawing.Size(206, 26);
             this.textBox1.TabIndex = 6;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -140,9 +140,9 @@
             "Yazar Adı",
             "Yayınlayan",
             "Isbn"});
-            this.comboBox2.Location = new System.Drawing.Point(537, 136);
+            this.comboBox2.Location = new System.Drawing.Point(534, 138);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(107, 26);
+            this.comboBox2.Size = new System.Drawing.Size(233, 26);
             this.comboBox2.TabIndex = 8;
             this.comboBox2.Text = "Eser Adı";
             // 
@@ -153,7 +153,7 @@
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(547, 99);
+            this.label2.Location = new System.Drawing.Point(592, 97);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label2.Size = new System.Drawing.Size(98, 24);
@@ -165,9 +165,9 @@
             // aramayap
             // 
             this.aramayap.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.aramayap.Location = new System.Drawing.Point(689, 134);
+            this.aramayap.Location = new System.Drawing.Point(816, 138);
             this.aramayap.Name = "aramayap";
-            this.aramayap.Size = new System.Drawing.Size(75, 25);
+            this.aramayap.Size = new System.Drawing.Size(91, 30);
             this.aramayap.TabIndex = 10;
             this.aramayap.Text = "ara";
             this.aramayap.UseVisualStyleBackColor = true;
@@ -188,10 +188,10 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(99, 190);
+            this.dataGridView1.Location = new System.Drawing.Point(116, 187);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dataGridView1.Size = new System.Drawing.Size(645, 121);
+            this.dataGridView1.Size = new System.Drawing.Size(791, 121);
             this.dataGridView1.TabIndex = 12;
             // 
             // anasayfa
@@ -201,7 +201,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(771, 511);
+            this.ClientSize = new System.Drawing.Size(935, 517);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.aramayap);

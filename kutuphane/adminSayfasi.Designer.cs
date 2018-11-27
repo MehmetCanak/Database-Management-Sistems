@@ -204,7 +204,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.Location = new System.Drawing.Point(452, 64);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(396, 39);
+            this.label8.Size = new System.Drawing.Size(436, 39);
             this.label8.TabIndex = 28;
             this.label8.Text = "*kullanıcıya ait olup admin tarafından girilmeyen bilgiler arkaplanda yapılmaktad" +
     "ır";
@@ -259,7 +259,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(863, 554);
+            this.ClientSize = new System.Drawing.Size(903, 554);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.kullaniciSil);
@@ -284,7 +284,8 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "adminSayfasi";
-            this.Text = "adminSayfasi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "YÖNETİCİ SAYFASI";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

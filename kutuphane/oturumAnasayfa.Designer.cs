@@ -105,7 +105,7 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "* Kütüphane hesabınız ile ilgili bilgilendirmelerden haberdar olabilmek için lütf" +
     "en sisteme kayıtlı e-posta adreslerinizi güncelleyiniz.";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
@@ -195,7 +195,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(331, 353);
+            this.label10.Location = new System.Drawing.Point(330, 355);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 17;
@@ -205,7 +205,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 480);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(903, 492);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox4);
@@ -223,7 +224,8 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Name = "oturumAnasayfa";
-            this.Text = "oturumAnasayfa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "OTURUM SAYFASI";
             this.ResumeLayout(false);
             this.PerformLayout();
 
