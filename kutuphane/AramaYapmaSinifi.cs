@@ -22,10 +22,7 @@ namespace kutuphane
 
         private void AramaYapmaSinifi_Load(object sender, EventArgs e)
         {
-            //anasayfa asy = new anasayfa();
-            //string kutup = asy.kutup.ToString();
-            //string aranan = asy.aranan.ToString();
-            //string kategori = asy.kategori.ToString();
+            
             using(DataClasses1DataContext dt=new DataClasses1DataContext())
             {
                 if (kutup == "Tümü")
