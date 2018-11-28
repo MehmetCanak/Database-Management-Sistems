@@ -86,6 +86,7 @@ namespace kutuphane
         {
             int sil;
             sil = int.Parse(textBox3.Text);
+            
             try
             {
                 using(var dkkls=new DataClasses1DataContext())

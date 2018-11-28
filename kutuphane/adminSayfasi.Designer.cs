@@ -192,9 +192,9 @@
             // label7
             // 
             this.label7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label7.Location = new System.Drawing.Point(452, 19);
+            this.label7.Location = new System.Drawing.Point(455, 19);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(354, 58);
+            this.label7.Size = new System.Drawing.Size(351, 45);
             this.label7.TabIndex = 27;
             this.label7.Text = "* kullanıcıya sifre verme islemi random arka planda c# ile random yapılmaktadır";
             // 
@@ -308,7 +308,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button listeleKullanici;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label6;
+        //private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
