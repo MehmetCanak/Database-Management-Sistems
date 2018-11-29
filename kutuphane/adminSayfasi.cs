@@ -19,6 +19,16 @@ namespace kutuphane
         string email1;
         int id1;
         string tel1;
+       private int yonetici;
+       private string ysifre;
+        public int yntc { get { return yonetici; }
+                        set
+                        {
+                yonetici = value;
+                         } }
+        public string sfr
+        { get { return ysifre; } set { ysifre = value; }
+        } 
 
         public adminSayfasi()
         {
@@ -34,10 +44,14 @@ namespace kutuphane
             Random rm = new Random();
             sifre1 = (rm.Next(123456, 989789).ToString());
             tel1 = rm.Next(1111111, 9999999).ToString();
-            
+            DateTime time = DateTime.Now;
             using (DataClasses1DataContext dcdc=new DataClasses1DataContext())
             {
                 var idbul = dcdc.uye.Max(k=>k.id);
+                var ybul = (from i in dcdc.admin
+                            join j in dcdc.kutuphane on i.kutuphaneID equals j.id
+                            where i.kutuphaneID==j.id && i.id == yonetici && i.sifre == ysifre
+                            select j.id).FirstOrDefault();
                 id1 = idbul;
                 id1 = id1 + 1;
                 uye uyeSinifi = new uye()
@@ -49,9 +63,13 @@ namespace kutuphane
                     email = email1,
                     sifre = sifre1,
                     tel = tel1,
+                    
     
                 };
+                
+                
                 dcdc.uye.InsertOnSubmit(uyeSinifi);
+                //dcdc.kayıt.InsertOnSubmit(ks);
                 dcdc.SubmitChanges();
                
             }

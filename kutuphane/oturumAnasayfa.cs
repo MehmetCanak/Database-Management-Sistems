@@ -41,6 +41,8 @@ namespace kutuphane
                         oturumAnasayfa oas = new oturumAnasayfa();
                         oas.Close();
                         adminSayfasi asf = new adminSayfasi();
+                        asf.yntc = kullaniciAdi;
+                        asf.sfr = sifre;
                         asf.Show();
                         this.Hide();
 
@@ -93,6 +95,7 @@ namespace kutuphane
                         }
                     }
                 }
+
             }
             catch(Exception hata)
             {
