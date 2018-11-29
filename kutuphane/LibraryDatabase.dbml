@@ -7,15 +7,6 @@
       <Association Name="kategori_kitap" Member="kitap" ThisKey="id" OtherKey="kategoriID" Type="kitap" />
     </Type>
   </Table>
-  <Table Name="dbo.kayıt" Member="kayıt">
-    <Type Name="kayıt">
-      <Column Name="kutuphaneID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="uyeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="kayit_tarihi" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Association Name="kutuphane_kayıt" Member="kutuphane" ThisKey="kutuphaneID" OtherKey="id" Type="kutuphane" IsForeignKey="true" />
-      <Association Name="uye_kayıt" Member="uye" ThisKey="uyeID" OtherKey="id" Type="uye" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.kitap" Member="kitap">
     <Type Name="kitap">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -24,8 +15,8 @@
       <Column Name="yazarAdi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="kategoriID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="yayıneviID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="kitap_odunc" Member="odunc" ThisKey="id" OtherKey="kitapID" Type="odunc" />
       <Association Name="kitap_yerbilgisi" Member="yerbilgisi" ThisKey="id" OtherKey="kitapID" Type="yerbilgisi" />
+      <Association Name="kitap_odunc" Member="odunc" ThisKey="id" OtherKey="kitapID" Type="odunc" />
       <Association Name="kategori_kitap" Member="kategori" ThisKey="kategoriID" OtherKey="id" Type="kategori" IsForeignKey="true" />
       <Association Name="yayinevi_kitap" Member="yayinevi" ThisKey="yayıneviID" OtherKey="id" Type="yayinevi" IsForeignKey="true" />
       <Association Name="yazar_kitap" Member="yazar" ThisKey="yazarAdi" OtherKey="ad" Type="yazar" IsForeignKey="true" />
@@ -36,21 +27,9 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="ad" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="adres" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="kutuphane_yerbilgisi" Member="yerbilgisi" ThisKey="id" OtherKey="kutuphaneID" Type="yerbilgisi" />
       <Association Name="kutuphane_kayıt" Member="kayıt" ThisKey="id" OtherKey="kutuphaneID" Type="kayıt" />
       <Association Name="kutuphane_odunc" Member="odunc" ThisKey="id" OtherKey="kutuphaneID" Type="odunc" />
-      <Association Name="kutuphane_yerbilgisi" Member="yerbilgisi" ThisKey="id" OtherKey="kutuphaneID" Type="yerbilgisi" />
-    </Type>
-  </Table>
-  <Table Name="dbo.odunc" Member="odunc">
-    <Type Name="odunc">
-      <Column Name="kutuphaneID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="uyeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="kitapID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="odunc_alma_tarihi" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="son_teslim_tarihi" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Association Name="kitap_odunc" Member="kitap" ThisKey="kitapID" OtherKey="id" Type="kitap" IsForeignKey="true" />
-      <Association Name="kutuphane_odunc" Member="kutuphane" ThisKey="kutuphaneID" OtherKey="id" Type="kutuphane" IsForeignKey="true" />
-      <Association Name="uye_odunc" Member="uye" ThisKey="uyeID" OtherKey="id" Type="uye" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.uye" Member="uye">
@@ -102,6 +81,29 @@
       <Column Name="sifre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="adres" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="tel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.kayıt" Member="kayıt">
+    <Type Name="kayıt">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="kutuphaneID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="uyeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="kayit_tarihi" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="kutuphane_kayıt" Member="kutuphane" ThisKey="kutuphaneID" OtherKey="id" Type="kutuphane" IsForeignKey="true" />
+      <Association Name="uye_kayıt" Member="uye" ThisKey="uyeID" OtherKey="id" Type="uye" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.odunc" Member="odunc">
+    <Type Name="odunc">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="kutuphaneID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="uyeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="kitapID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="odunc_alma_tarihi" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="son_teslim_tarihi" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="kitap_odunc" Member="kitap" ThisKey="kitapID" OtherKey="id" Type="kitap" IsForeignKey="true" />
+      <Association Name="kutuphane_odunc" Member="kutuphane" ThisKey="kutuphaneID" OtherKey="id" Type="kutuphane" IsForeignKey="true" />
+      <Association Name="uye_odunc" Member="uye" ThisKey="uyeID" OtherKey="id" Type="uye" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

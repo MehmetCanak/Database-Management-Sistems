@@ -49,6 +49,12 @@
             this.kullaniciSil = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.oduncVer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,7 +116,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox1.Location = new System.Drawing.Point(160, 128);
+            this.textBox1.Location = new System.Drawing.Point(151, 127);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(238, 22);
@@ -119,7 +125,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox2.Location = new System.Drawing.Point(160, 170);
+            this.textBox2.Location = new System.Drawing.Point(151, 169);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(238, 22);
@@ -128,7 +134,7 @@
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox3.Location = new System.Drawing.Point(160, 214);
+            this.textBox3.Location = new System.Drawing.Point(151, 213);
             this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(238, 22);
@@ -136,7 +142,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(160, 254);
+            this.textBox4.Location = new System.Drawing.Point(151, 253);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(238, 22);
@@ -145,7 +151,7 @@
             // ekleKullanici
             // 
             this.ekleKullanici.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.ekleKullanici.Location = new System.Drawing.Point(160, 295);
+            this.ekleKullanici.Location = new System.Drawing.Point(151, 295);
             this.ekleKullanici.Margin = new System.Windows.Forms.Padding(4);
             this.ekleKullanici.Name = "ekleKullanici";
             this.ekleKullanici.Size = new System.Drawing.Size(112, 28);
@@ -165,7 +171,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(116, 359);
+            this.label11.Location = new System.Drawing.Point(58, 359);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(145, 16);
             this.label11.TabIndex = 23;
@@ -173,9 +179,9 @@
             // 
             // listeleKullanici
             // 
-            this.listeleKullanici.Location = new System.Drawing.Point(295, 348);
+            this.listeleKullanici.Location = new System.Drawing.Point(253, 348);
             this.listeleKullanici.Name = "listeleKullanici";
-            this.listeleKullanici.Size = new System.Drawing.Size(176, 38);
+            this.listeleKullanici.Size = new System.Drawing.Size(116, 38);
             this.listeleKullanici.TabIndex = 24;
             this.listeleKullanici.Text = "listele";
             this.listeleKullanici.UseVisualStyleBackColor = true;
@@ -192,7 +198,7 @@
             // label7
             // 
             this.label7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label7.Location = new System.Drawing.Point(455, 19);
+            this.label7.Location = new System.Drawing.Point(439, 9);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(351, 45);
             this.label7.TabIndex = 27;
@@ -202,7 +208,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.Location = new System.Drawing.Point(452, 64);
+            this.label8.Location = new System.Drawing.Point(439, 54);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(436, 39);
             this.label8.TabIndex = 28;
@@ -212,7 +218,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(452, 103);
+            this.label9.Location = new System.Drawing.Point(439, 93);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(281, 16);
             this.label9.TabIndex = 29;
@@ -221,7 +227,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(452, 128);
+            this.label10.Location = new System.Drawing.Point(439, 118);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(272, 16);
             this.label10.TabIndex = 30;
@@ -229,7 +235,7 @@
             // 
             // kullaniciSil
             // 
-            this.kullaniciSil.Location = new System.Drawing.Point(308, 295);
+            this.kullaniciSil.Location = new System.Drawing.Point(279, 295);
             this.kullaniciSil.Name = "kullaniciSil";
             this.kullaniciSil.Size = new System.Drawing.Size(103, 28);
             this.kullaniciSil.TabIndex = 32;
@@ -240,7 +246,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(452, 155);
+            this.label13.Location = new System.Drawing.Point(439, 144);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(233, 16);
             this.label13.TabIndex = 33;
@@ -249,17 +255,84 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(427, 188);
+            this.label14.Location = new System.Drawing.Point(12, 19);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(421, 16);
             this.label14.TabIndex = 34;
             this.label14.Text = "!! silme islemi icin sadece tc numarasının girilmesi yeterlidir.";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label6.Location = new System.Drawing.Point(579, 196);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(152, 16);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "ÖDÜNÇ KİTAP VER :";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label15.Location = new System.Drawing.Point(458, 245);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(111, 16);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "üye TC NO su :";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label16.Location = new System.Drawing.Point(458, 274);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(121, 16);
+            this.label16.TabIndex = 37;
+            this.label16.Text = "kitabın İSBN si  :";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox5.Location = new System.Drawing.Point(587, 271);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(238, 22);
+            this.textBox5.TabIndex = 38;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox6.Location = new System.Drawing.Point(587, 239);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(238, 22);
+            this.textBox6.TabIndex = 39;
+            // 
+            // oduncVer
+            // 
+            this.oduncVer.Location = new System.Drawing.Point(619, 310);
+            this.oduncVer.Name = "oduncVer";
+            this.oduncVer.Size = new System.Drawing.Size(131, 41);
+            this.oduncVer.TabIndex = 40;
+            this.oduncVer.Text = "ÖDÜNÇ VER";
+            this.oduncVer.UseVisualStyleBackColor = true;
+            this.oduncVer.Click += new System.EventHandler(this.oduncVer_Click);
             // 
             // adminSayfasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(903, 554);
+            this.Controls.Add(this.oduncVer);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.kullaniciSil);
@@ -316,5 +389,11 @@
         private System.Windows.Forms.Button kullaniciSil;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button oduncVer;
     }
 }

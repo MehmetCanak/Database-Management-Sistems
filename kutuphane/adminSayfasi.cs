@@ -28,8 +28,10 @@ namespace kutuphane
                          } }
         public string sfr
         { get { return ysifre; } set { ysifre = value; }
-        } 
+        }
 
+        int oduncUye;
+        string oduncKitap;
         public adminSayfasi()
         {
             InitializeComponent();
@@ -44,7 +46,7 @@ namespace kutuphane
             Random rm = new Random();
             sifre1 = (rm.Next(123456, 989789).ToString());
             tel1 = rm.Next(1111111, 9999999).ToString();
-            DateTime time = DateTime.Now;
+            //DateTime time = DateTime.Now;
             using (DataClasses1DataContext dcdc=new DataClasses1DataContext())
             {
                 var idbul = dcdc.uye.Max(k=>k.id);
@@ -66,10 +68,18 @@ namespace kutuphane
                     
     
                 };
-                
-                
+                kayıt kyt = new kayıt()
+                {
+                    //kayit_tarihi = time.Date,
+                    kutuphaneID = 1,
+                    uyeID = id1,
+                    
+
+                };
+
+
                 dcdc.uye.InsertOnSubmit(uyeSinifi);
-                //dcdc.kayıt.InsertOnSubmit(ks);
+                dcdc.kayıt.InsertOnSubmit(kyt);
                 dcdc.SubmitChanges();
                
             }
@@ -127,6 +137,60 @@ namespace kutuphane
 
             }
             textBox3.Text = "";
+        }
+
+        private void oduncVer_Click(object sender, EventArgs e)
+        {
+            oduncKitap = textBox5.Text;
+            if(textBox6.Text.Length==9)
+            {
+                oduncUye = int.Parse(textBox6.Text);
+            }
+            else
+            {
+                MessageBox.Show("lütfen tekrar tc numaranızı girin : ");
+            }
+            using(DataClasses1DataContext dc=new DataClasses1DataContext())
+            {
+                var varmi = dc.uye.Where(s => s.tc == oduncUye).Select(s => s.ad).Any();
+                var varmiKitap = dc.kitap.Where(s => s.isbn == oduncKitap).Select(s => s.ad).Any();
+                if (varmi == true || varmiKitap==true)
+                {
+
+                    //var uyeBul = (from od in dc.odunc
+                    //          join k in dc.kutuphane on od.kutuphaneID equals k.id
+                    //          join i in dc.uye on od.uyeID equals i.id
+                    //          join ktp in dc.kitap on od.kitapID equals ktp.id
+                    //          where  i.tc==oduncUye && ktp.isbn==oduncKitap
+                    //          select new {
+                    //                      k.});
+                    //var uyeId = (from i in dc.uye
+                    //             where i.tc==oduncUye
+                    //             select i.id
+                    //             );
+                    //var kitapId = (from k in dc.kitap
+                    //               where k.isbn==oduncKitap
+                    //               select k.id);
+
+                    //odunc odc = new odunc()
+                    //{
+                    //    kutuphaneID = 1,
+                    //    uyeID = uyeId.FirstOrDefault(),
+                    //    kitapID = kitapId.FirstOrDefault(),
+                    //    //odunc_alma_tarihi=DateTime.Now
+
+                    //};
+
+                    //dc.odunc.InsertOnSubmit(odc);
+                    //dc.SubmitChanges();
+                }
+                else
+                {
+                    MessageBox.Show("böyle bir uye yoktur ");
+                }
+            }
+            
+            
         }
     }
 }

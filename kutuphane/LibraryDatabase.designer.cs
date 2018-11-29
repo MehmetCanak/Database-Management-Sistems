@@ -48,6 +48,12 @@ namespace kutuphane
     partial void Insertyazar(yazar instance);
     partial void Updateyazar(yazar instance);
     partial void Deleteyazar(yazar instance);
+    partial void Insertkayıt(kayıt instance);
+    partial void Updatekayıt(kayıt instance);
+    partial void Deletekayıt(kayıt instance);
+    partial void Insertodunc(odunc instance);
+    partial void Updateodunc(odunc instance);
+    partial void Deleteodunc(odunc instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -88,14 +94,6 @@ namespace kutuphane
 			}
 		}
 		
-		public System.Data.Linq.Table<kayıt> kayıt
-		{
-			get
-			{
-				return this.GetTable<kayıt>();
-			}
-		}
-		
 		public System.Data.Linq.Table<kitap> kitap
 		{
 			get
@@ -109,14 +107,6 @@ namespace kutuphane
 			get
 			{
 				return this.GetTable<kutuphane>();
-			}
-		}
-		
-		public System.Data.Linq.Table<odunc> odunc
-		{
-			get
-			{
-				return this.GetTable<odunc>();
 			}
 		}
 		
@@ -157,6 +147,22 @@ namespace kutuphane
 			get
 			{
 				return this.GetTable<admin>();
+			}
+		}
+		
+		public System.Data.Linq.Table<kayıt> kayıt
+		{
+			get
+			{
+				return this.GetTable<kayıt>();
+			}
+		}
+		
+		public System.Data.Linq.Table<odunc> odunc
+		{
+			get
+			{
+				return this.GetTable<odunc>();
 			}
 		}
 	}
@@ -275,69 +281,6 @@ namespace kutuphane
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.kayıt")]
-	public partial class kayıt
-	{
-		
-		private int _kutuphaneID;
-		
-		private int _uyeID;
-		
-		private System.Nullable<System.DateTime> _kayit_tarihi;
-		
-		public kayıt()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kutuphaneID", DbType="Int NOT NULL")]
-		public int kutuphaneID
-		{
-			get
-			{
-				return this._kutuphaneID;
-			}
-			set
-			{
-				if ((this._kutuphaneID != value))
-				{
-					this._kutuphaneID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uyeID", DbType="Int NOT NULL")]
-		public int uyeID
-		{
-			get
-			{
-				return this._uyeID;
-			}
-			set
-			{
-				if ((this._uyeID != value))
-				{
-					this._uyeID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kayit_tarihi", DbType="Date")]
-		public System.Nullable<System.DateTime> kayit_tarihi
-		{
-			get
-			{
-				return this._kayit_tarihi;
-			}
-			set
-			{
-				if ((this._kayit_tarihi != value))
-				{
-					this._kayit_tarihi = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.kitap")]
 	public partial class kitap : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -355,6 +298,8 @@ namespace kutuphane
 		private System.Nullable<int> _kategoriID;
 		
 		private System.Nullable<int> _yayıneviID;
+		
+		private EntitySet<odunc> _odunc;
 		
 		private EntityRef<kategori> _kategori;
 		
@@ -382,6 +327,7 @@ namespace kutuphane
 		
 		public kitap()
 		{
+			this._odunc = new EntitySet<odunc>(new Action<odunc>(this.attach_odunc), new Action<odunc>(this.detach_odunc));
 			this._kategori = default(EntityRef<kategori>);
 			this._yayinevi = default(EntityRef<yayinevi>);
 			this._yazar = default(EntityRef<yazar>);
@@ -520,6 +466,19 @@ namespace kutuphane
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="kitap_odunc", Storage="_odunc", ThisKey="id", OtherKey="kitapID")]
+		public EntitySet<odunc> odunc
+		{
+			get
+			{
+				return this._odunc;
+			}
+			set
+			{
+				this._odunc.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="kategori_kitap", Storage="_kategori", ThisKey="kategoriID", OtherKey="id", IsForeignKey=true)]
 		public kategori kategori
 		{
@@ -641,6 +600,18 @@ namespace kutuphane
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_odunc(odunc entity)
+		{
+			this.SendPropertyChanging();
+			entity.kitap = this;
+		}
+		
+		private void detach_odunc(odunc entity)
+		{
+			this.SendPropertyChanging();
+			entity.kitap = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.kutuphane")]
@@ -654,6 +625,10 @@ namespace kutuphane
 		private string _ad;
 		
 		private string _adres;
+		
+		private EntitySet<kayıt> _kayıt;
+		
+		private EntitySet<odunc> _odunc;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -669,6 +644,8 @@ namespace kutuphane
 		
 		public kutuphane()
 		{
+			this._kayıt = new EntitySet<kayıt>(new Action<kayıt>(this.attach_kayıt), new Action<kayıt>(this.detach_kayıt));
+			this._odunc = new EntitySet<odunc>(new Action<odunc>(this.attach_odunc), new Action<odunc>(this.detach_odunc));
 			OnCreated();
 		}
 		
@@ -732,6 +709,32 @@ namespace kutuphane
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="kutuphane_kayıt", Storage="_kayıt", ThisKey="id", OtherKey="kutuphaneID")]
+		public EntitySet<kayıt> kayıt
+		{
+			get
+			{
+				return this._kayıt;
+			}
+			set
+			{
+				this._kayıt.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="kutuphane_odunc", Storage="_odunc", ThisKey="id", OtherKey="kutuphaneID")]
+		public EntitySet<odunc> odunc
+		{
+			get
+			{
+				return this._odunc;
+			}
+			set
+			{
+				this._odunc.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -751,104 +754,29 @@ namespace kutuphane
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.odunc")]
-	public partial class odunc
-	{
 		
-		private int _kutuphaneID;
-		
-		private int _uyeID;
-		
-		private int _kitapID;
-		
-		private System.DateTime _odunc_alma_tarihi;
-		
-		private System.DateTime _son_teslim_tarihi;
-		
-		public odunc()
+		private void attach_kayıt(kayıt entity)
 		{
+			this.SendPropertyChanging();
+			entity.kutuphane = this;
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kutuphaneID", DbType="Int NOT NULL")]
-		public int kutuphaneID
+		private void detach_kayıt(kayıt entity)
 		{
-			get
-			{
-				return this._kutuphaneID;
-			}
-			set
-			{
-				if ((this._kutuphaneID != value))
-				{
-					this._kutuphaneID = value;
-				}
-			}
+			this.SendPropertyChanging();
+			entity.kutuphane = null;
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uyeID", DbType="Int NOT NULL")]
-		public int uyeID
+		private void attach_odunc(odunc entity)
 		{
-			get
-			{
-				return this._uyeID;
-			}
-			set
-			{
-				if ((this._uyeID != value))
-				{
-					this._uyeID = value;
-				}
-			}
+			this.SendPropertyChanging();
+			entity.kutuphane = this;
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kitapID", DbType="Int NOT NULL")]
-		public int kitapID
+		private void detach_odunc(odunc entity)
 		{
-			get
-			{
-				return this._kitapID;
-			}
-			set
-			{
-				if ((this._kitapID != value))
-				{
-					this._kitapID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_odunc_alma_tarihi", DbType="Date NOT NULL")]
-		public System.DateTime odunc_alma_tarihi
-		{
-			get
-			{
-				return this._odunc_alma_tarihi;
-			}
-			set
-			{
-				if ((this._odunc_alma_tarihi != value))
-				{
-					this._odunc_alma_tarihi = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_son_teslim_tarihi", DbType="Date NOT NULL")]
-		public System.DateTime son_teslim_tarihi
-		{
-			get
-			{
-				return this._son_teslim_tarihi;
-			}
-			set
-			{
-				if ((this._son_teslim_tarihi != value))
-				{
-					this._son_teslim_tarihi = value;
-				}
-			}
+			this.SendPropertyChanging();
+			entity.kutuphane = null;
 		}
 	}
 	
@@ -872,6 +800,10 @@ namespace kutuphane
 		
 		private string _tel;
 		
+		private EntitySet<kayıt> _kayıt;
+		
+		private EntitySet<odunc> _odunc;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -894,6 +826,8 @@ namespace kutuphane
 		
 		public uye()
 		{
+			this._kayıt = new EntitySet<kayıt>(new Action<kayıt>(this.attach_kayıt), new Action<kayıt>(this.detach_kayıt));
+			this._odunc = new EntitySet<odunc>(new Action<odunc>(this.attach_odunc), new Action<odunc>(this.detach_odunc));
 			OnCreated();
 		}
 		
@@ -1037,6 +971,32 @@ namespace kutuphane
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="uye_kayıt", Storage="_kayıt", ThisKey="id", OtherKey="uyeID")]
+		public EntitySet<kayıt> kayıt
+		{
+			get
+			{
+				return this._kayıt;
+			}
+			set
+			{
+				this._kayıt.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="uye_odunc", Storage="_odunc", ThisKey="id", OtherKey="uyeID")]
+		public EntitySet<odunc> odunc
+		{
+			get
+			{
+				return this._odunc;
+			}
+			set
+			{
+				this._odunc.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1055,6 +1015,30 @@ namespace kutuphane
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_kayıt(kayıt entity)
+		{
+			this.SendPropertyChanging();
+			entity.uye = this;
+		}
+		
+		private void detach_kayıt(kayıt entity)
+		{
+			this.SendPropertyChanging();
+			entity.uye = null;
+		}
+		
+		private void attach_odunc(odunc entity)
+		{
+			this.SendPropertyChanging();
+			entity.uye = this;
+		}
+		
+		private void detach_odunc(odunc entity)
+		{
+			this.SendPropertyChanging();
+			entity.uye = null;
 		}
 	}
 	
@@ -1570,6 +1554,527 @@ namespace kutuphane
 				{
 					this._tel = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.kayıt")]
+	public partial class kayıt : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _kutuphaneID;
+		
+		private int _uyeID;
+		
+		private System.DateTime _kayit_tarihi;
+		
+		private EntityRef<kutuphane> _kutuphane;
+		
+		private EntityRef<uye> _uye;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnkutuphaneIDChanging(int value);
+    partial void OnkutuphaneIDChanged();
+    partial void OnuyeIDChanging(int value);
+    partial void OnuyeIDChanged();
+    partial void Onkayit_tarihiChanging(System.DateTime value);
+    partial void Onkayit_tarihiChanged();
+    #endregion
+		
+		public kayıt()
+		{
+			this._kutuphane = default(EntityRef<kutuphane>);
+			this._uye = default(EntityRef<uye>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kutuphaneID", DbType="Int NOT NULL")]
+		public int kutuphaneID
+		{
+			get
+			{
+				return this._kutuphaneID;
+			}
+			set
+			{
+				if ((this._kutuphaneID != value))
+				{
+					if (this._kutuphane.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnkutuphaneIDChanging(value);
+					this.SendPropertyChanging();
+					this._kutuphaneID = value;
+					this.SendPropertyChanged("kutuphaneID");
+					this.OnkutuphaneIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uyeID", DbType="Int NOT NULL")]
+		public int uyeID
+		{
+			get
+			{
+				return this._uyeID;
+			}
+			set
+			{
+				if ((this._uyeID != value))
+				{
+					if (this._uye.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnuyeIDChanging(value);
+					this.SendPropertyChanging();
+					this._uyeID = value;
+					this.SendPropertyChanged("uyeID");
+					this.OnuyeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kayit_tarihi", DbType="Date NOT NULL")]
+		public System.DateTime kayit_tarihi
+		{
+			get
+			{
+				return this._kayit_tarihi;
+			}
+			set
+			{
+				if ((this._kayit_tarihi != value))
+				{
+					this.Onkayit_tarihiChanging(value);
+					this.SendPropertyChanging();
+					this._kayit_tarihi = value;
+					this.SendPropertyChanged("kayit_tarihi");
+					this.Onkayit_tarihiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="kutuphane_kayıt", Storage="_kutuphane", ThisKey="kutuphaneID", OtherKey="id", IsForeignKey=true)]
+		public kutuphane kutuphane
+		{
+			get
+			{
+				return this._kutuphane.Entity;
+			}
+			set
+			{
+				kutuphane previousValue = this._kutuphane.Entity;
+				if (((previousValue != value) 
+							|| (this._kutuphane.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._kutuphane.Entity = null;
+						previousValue.kayıt.Remove(this);
+					}
+					this._kutuphane.Entity = value;
+					if ((value != null))
+					{
+						value.kayıt.Add(this);
+						this._kutuphaneID = value.id;
+					}
+					else
+					{
+						this._kutuphaneID = default(int);
+					}
+					this.SendPropertyChanged("kutuphane");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="uye_kayıt", Storage="_uye", ThisKey="uyeID", OtherKey="id", IsForeignKey=true)]
+		public uye uye
+		{
+			get
+			{
+				return this._uye.Entity;
+			}
+			set
+			{
+				uye previousValue = this._uye.Entity;
+				if (((previousValue != value) 
+							|| (this._uye.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._uye.Entity = null;
+						previousValue.kayıt.Remove(this);
+					}
+					this._uye.Entity = value;
+					if ((value != null))
+					{
+						value.kayıt.Add(this);
+						this._uyeID = value.id;
+					}
+					else
+					{
+						this._uyeID = default(int);
+					}
+					this.SendPropertyChanged("uye");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.odunc")]
+	public partial class odunc : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private System.Nullable<int> _kutuphaneID;
+		
+		private System.Nullable<int> _uyeID;
+		
+		private System.Nullable<int> _kitapID;
+		
+		private System.DateTime _odunc_alma_tarihi;
+		
+		private string _son_teslim_tarihi;
+		
+		private EntityRef<kitap> _kitap;
+		
+		private EntityRef<kutuphane> _kutuphane;
+		
+		private EntityRef<uye> _uye;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnkutuphaneIDChanging(System.Nullable<int> value);
+    partial void OnkutuphaneIDChanged();
+    partial void OnuyeIDChanging(System.Nullable<int> value);
+    partial void OnuyeIDChanged();
+    partial void OnkitapIDChanging(System.Nullable<int> value);
+    partial void OnkitapIDChanged();
+    partial void Onodunc_alma_tarihiChanging(System.DateTime value);
+    partial void Onodunc_alma_tarihiChanged();
+    partial void Onson_teslim_tarihiChanging(string value);
+    partial void Onson_teslim_tarihiChanged();
+    #endregion
+		
+		public odunc()
+		{
+			this._kitap = default(EntityRef<kitap>);
+			this._kutuphane = default(EntityRef<kutuphane>);
+			this._uye = default(EntityRef<uye>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kutuphaneID", DbType="Int")]
+		public System.Nullable<int> kutuphaneID
+		{
+			get
+			{
+				return this._kutuphaneID;
+			}
+			set
+			{
+				if ((this._kutuphaneID != value))
+				{
+					if (this._kutuphane.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnkutuphaneIDChanging(value);
+					this.SendPropertyChanging();
+					this._kutuphaneID = value;
+					this.SendPropertyChanged("kutuphaneID");
+					this.OnkutuphaneIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uyeID", DbType="Int")]
+		public System.Nullable<int> uyeID
+		{
+			get
+			{
+				return this._uyeID;
+			}
+			set
+			{
+				if ((this._uyeID != value))
+				{
+					if (this._uye.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnuyeIDChanging(value);
+					this.SendPropertyChanging();
+					this._uyeID = value;
+					this.SendPropertyChanged("uyeID");
+					this.OnuyeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kitapID", DbType="Int")]
+		public System.Nullable<int> kitapID
+		{
+			get
+			{
+				return this._kitapID;
+			}
+			set
+			{
+				if ((this._kitapID != value))
+				{
+					if (this._kitap.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnkitapIDChanging(value);
+					this.SendPropertyChanging();
+					this._kitapID = value;
+					this.SendPropertyChanged("kitapID");
+					this.OnkitapIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_odunc_alma_tarihi", DbType="Date NOT NULL")]
+		public System.DateTime odunc_alma_tarihi
+		{
+			get
+			{
+				return this._odunc_alma_tarihi;
+			}
+			set
+			{
+				if ((this._odunc_alma_tarihi != value))
+				{
+					this.Onodunc_alma_tarihiChanging(value);
+					this.SendPropertyChanging();
+					this._odunc_alma_tarihi = value;
+					this.SendPropertyChanged("odunc_alma_tarihi");
+					this.Onodunc_alma_tarihiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_son_teslim_tarihi", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		public string son_teslim_tarihi
+		{
+			get
+			{
+				return this._son_teslim_tarihi;
+			}
+			set
+			{
+				if ((this._son_teslim_tarihi != value))
+				{
+					this.Onson_teslim_tarihiChanging(value);
+					this.SendPropertyChanging();
+					this._son_teslim_tarihi = value;
+					this.SendPropertyChanged("son_teslim_tarihi");
+					this.Onson_teslim_tarihiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="kitap_odunc", Storage="_kitap", ThisKey="kitapID", OtherKey="id", IsForeignKey=true)]
+		public kitap kitap
+		{
+			get
+			{
+				return this._kitap.Entity;
+			}
+			set
+			{
+				kitap previousValue = this._kitap.Entity;
+				if (((previousValue != value) 
+							|| (this._kitap.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._kitap.Entity = null;
+						previousValue.odunc.Remove(this);
+					}
+					this._kitap.Entity = value;
+					if ((value != null))
+					{
+						value.odunc.Add(this);
+						this._kitapID = value.id;
+					}
+					else
+					{
+						this._kitapID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("kitap");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="kutuphane_odunc", Storage="_kutuphane", ThisKey="kutuphaneID", OtherKey="id", IsForeignKey=true)]
+		public kutuphane kutuphane
+		{
+			get
+			{
+				return this._kutuphane.Entity;
+			}
+			set
+			{
+				kutuphane previousValue = this._kutuphane.Entity;
+				if (((previousValue != value) 
+							|| (this._kutuphane.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._kutuphane.Entity = null;
+						previousValue.odunc.Remove(this);
+					}
+					this._kutuphane.Entity = value;
+					if ((value != null))
+					{
+						value.odunc.Add(this);
+						this._kutuphaneID = value.id;
+					}
+					else
+					{
+						this._kutuphaneID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("kutuphane");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="uye_odunc", Storage="_uye", ThisKey="uyeID", OtherKey="id", IsForeignKey=true)]
+		public uye uye
+		{
+			get
+			{
+				return this._uye.Entity;
+			}
+			set
+			{
+				uye previousValue = this._uye.Entity;
+				if (((previousValue != value) 
+							|| (this._uye.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._uye.Entity = null;
+						previousValue.odunc.Remove(this);
+					}
+					this._uye.Entity = value;
+					if ((value != null))
+					{
+						value.odunc.Add(this);
+						this._uyeID = value.id;
+					}
+					else
+					{
+						this._uyeID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("uye");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
