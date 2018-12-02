@@ -95,12 +95,12 @@
   </Table>
   <Table Name="dbo.odunc" Member="odunc">
     <Type Name="odunc">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="kutuphaneID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="uyeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="kitapID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="odunc_alma_tarihi" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="son_teslim_tarihi" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="odunc_alma_tarihi" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="son_teslim_tarihi" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Association Name="kitap_odunc" Member="kitap" ThisKey="kitapID" OtherKey="id" Type="kitap" IsForeignKey="true" />
       <Association Name="kutuphane_odunc" Member="kutuphane" ThisKey="kutuphaneID" OtherKey="id" Type="kutuphane" IsForeignKey="true" />
       <Association Name="uye_odunc" Member="uye" ThisKey="uyeID" OtherKey="id" Type="uye" IsForeignKey="true" />

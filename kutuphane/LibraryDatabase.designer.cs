@@ -1788,9 +1788,9 @@ namespace kutuphane
 		
 		private System.Nullable<int> _kitapID;
 		
-		private System.DateTime _odunc_alma_tarihi;
+		private System.Nullable<System.DateTime> _odunc_alma_tarihi;
 		
-		private string _son_teslim_tarihi;
+		private System.Nullable<System.DateTime> _son_teslim_tarihi;
 		
 		private EntityRef<kitap> _kitap;
 		
@@ -1810,9 +1810,9 @@ namespace kutuphane
     partial void OnuyeIDChanged();
     partial void OnkitapIDChanging(System.Nullable<int> value);
     partial void OnkitapIDChanged();
-    partial void Onodunc_alma_tarihiChanging(System.DateTime value);
+    partial void Onodunc_alma_tarihiChanging(System.Nullable<System.DateTime> value);
     partial void Onodunc_alma_tarihiChanged();
-    partial void Onson_teslim_tarihiChanging(string value);
+    partial void Onson_teslim_tarihiChanging(System.Nullable<System.DateTime> value);
     partial void Onson_teslim_tarihiChanged();
     #endregion
 		
@@ -1824,7 +1824,7 @@ namespace kutuphane
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int id
 		{
 			get
@@ -1916,8 +1916,8 @@ namespace kutuphane
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_odunc_alma_tarihi", DbType="Date NOT NULL")]
-		public System.DateTime odunc_alma_tarihi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_odunc_alma_tarihi", DbType="Date")]
+		public System.Nullable<System.DateTime> odunc_alma_tarihi
 		{
 			get
 			{
@@ -1936,8 +1936,8 @@ namespace kutuphane
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_son_teslim_tarihi", DbType="NChar(10) NOT NULL", CanBeNull=false)]
-		public string son_teslim_tarihi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_son_teslim_tarihi", DbType="Date")]
+		public System.Nullable<System.DateTime> son_teslim_tarihi
 		{
 			get
 			{

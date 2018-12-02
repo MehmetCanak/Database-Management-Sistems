@@ -194,7 +194,7 @@
             // uyeGirisi
             // 
             this.uyeGirisi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.uyeGirisi.Location = new System.Drawing.Point(479, 300);
+            this.uyeGirisi.Location = new System.Drawing.Point(479, 293);
             this.uyeGirisi.Name = "uyeGirisi";
             this.uyeGirisi.Size = new System.Drawing.Size(131, 32);
             this.uyeGirisi.TabIndex = 18;

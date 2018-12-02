@@ -46,17 +46,10 @@ namespace kutuphane
                         asf.Show();
                         this.Hide();
 
-                    }
-                    else
+                    }else
                     {
-                        MessageBox.Show("kullanıcı adi veya parola yalnış");
-                    }
-                }
-               
-            }
-            textBox1.Text = "";textBox2.Text = "";
-
-        }
+                        MessageBox.Show("kullanıcı adi veya parola yalnış");}}}
+            textBox1.Text = "";textBox2.Text = ""; }
 
        
 
